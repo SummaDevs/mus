@@ -1,0 +1,15 @@
+# torch issue
+git+https://github.com/facebookresearch/detectron2.git
+
+# farm-haystack deps
+# sudo apt install libgraphviz-dev
+farm-haystack[crawler,ocr,docstores,docstores-gpu,faiss,faiss-gpu,inference,pinecone,preprocessing,file-conversion,ray,weaviate]==1.22.1
+pygraphviz==1.11
+
+# tensorflow
+#tensorflow[and-cuda]==2.9.0
+#tensorflow-datasets==4.9.3
+#tensorflow-estimator==2.9.0
+#tensorflow-io-gcs-filesystem==0.34.0
+#tensorflow-metadata==1.14.0
+tensorflow[and-cuda]==2.15.0

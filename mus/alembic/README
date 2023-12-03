@@ -1,0 +1,10 @@
+Generic single-database configuration.
+
+Upgrade:
+alembic upgrade head
+
+Downgrade:
+alembic downgrade base
+
+Generate db schema upgrade from current to defined by models python code
+alembic revision --autogenerate -m "Create initial db"

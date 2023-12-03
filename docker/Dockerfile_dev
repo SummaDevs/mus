@@ -1,0 +1,12 @@
+FROM python:3.10-alpine
+
+WORKDIR /app/fast-api
+
+COPY requirements/ requirements/
+
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements/requirements_dev.txt
+
+COPY app/ /app
+
+EXPOSE 8000
+CMD ["uvicorn", "manage:app", "--reload"]

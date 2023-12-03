@@ -1,0 +1,11 @@
+# Put core requirements here.
+# See for information
+# https://pip.pypa.io/en/stable/reference/requirements-file-format/#requirements-file-format
+
+-r requirements.txt
+
+# api
+fastapi
+uvicorn
+
+
