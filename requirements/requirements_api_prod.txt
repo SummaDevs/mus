@@ -1,0 +1,5 @@
+# Put the production requirements here.
+# See for information
+# https://pip.pypa.io/en/stable/reference/requirements-file-format/#requirements-file-format
+
+-r requirements_api.txt

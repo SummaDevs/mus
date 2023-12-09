@@ -1,0 +1,23 @@
+# Put core requirements here.
+# See for information
+# https://pip.pypa.io/en/stable/reference/requirements-file-format/#requirements-file-format
+
+# unstructured deps:
+# sudo apt install libmagic-dev libxml2 poppler-utils tesseract-ocr libreoffice pandoc
+# snap install libxslt
+
+-r requirements.txt
+
+unstructured[all-docs]==0.11.0
+
+# unstructured deps
+paddleocr==2.7.0
+sentencepiece==0.1.99
+git+https://github.com/facebookresearch/detectron2.git
+
+# quick topic modeling & ner (gencim - spicy)
+pyLDAvis==3.4.1
+spacy==3.7.2
+
+# simple visualisation
+wordcloud==1.9.2

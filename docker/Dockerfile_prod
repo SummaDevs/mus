@@ -1,0 +1,13 @@
+FROM python:3.10-alpine
+
+WORKDIR /home/app/fast-api
+
+ENV PATH="/root/.local/bin:${PATH}"
+
+COPY requirements/ requirements/
+RUN pip install --user --no-cache-dir -r requirements/requirements_prod.txt
+
+COPY app/ app/
+
+EXPOSE 8000
+CMD ["uvicorn", "manage:app", "run_api"]

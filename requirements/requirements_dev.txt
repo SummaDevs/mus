@@ -1,0 +1,20 @@
+# Put develomment requirements here.
+# See for information
+# https://pip.pypa.io/en/stable/reference/requirements-file-format/#requirements-file-format
+
+-r requirements_api.txt
+-r requirements_data.txt
+
+# code quality
+pylint==3.0.2
+mypy==1.7.0
+
+# tests
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-mock==3.12.0
+pytest-env==1.1.1
+Faker==20.1.0
+factory-boy==3.3.0
+
+git+https://github.com/facebookresearch/detectron2.git

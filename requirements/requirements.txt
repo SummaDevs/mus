@@ -1,0 +1,23 @@
+# Put core requirements here.
+# See for information
+# https://pip.pypa.io/en/stable/reference/requirements-file-format/#requirements-file-format
+
+# common
+arrow
+
+# config and manage
+PyYAML==6.0.1
+trafaret==2.1.1
+jmespath==1.0.1
+python-dotenv[cli]==1.0.0
+arrow==1.2.3
+ndjson==0.3.1
+
+# database
+SQLAlchemy==1.4.50
+asyncpg==0.29.0
+psycopg2-binary==2.9.9
+alembic==1.12.1
+
+# es
+elasticsearch_dsl==8.11.0

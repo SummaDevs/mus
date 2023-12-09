@@ -1,0 +1,14 @@
+CONFIG_API:
+  PROJECT_NAME: "mus"
+  API_V1_STR: "/api/v1"
+  APP_VERSION: "Mus API"
+  FASTAPI_ENV: prod
+  UVICORN_HOST: "0.0.0.0"
+  UVICORN_PORT: "8000"
+  DATE_FORMAT: "%Y-%m-%d"
+  BACKEND_CORS_ORIGINS: "localhost"
+  LOGGER:
+    LOGGING_LEVEL: "INFO"
+  DATA_PROCESSING:
+    INPUT_FOLDER: "row_data"
+    OUTPUT_FOLDER: "std_data"
