@@ -1,2 +1,4 @@
 # NER
-EXCLUDE_NE_TYPE = {"PER", "LOC"}
+EXCLUDE_NE_TYPE = {}
+
+DEFAULT_NLP = "spacy"

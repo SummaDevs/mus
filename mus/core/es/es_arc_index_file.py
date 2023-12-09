@@ -1,7 +1,7 @@
 import json
 import os
 
-from mus.data_models.es_models.arc_text_model import ArcText
+from mus.data_models.json_doc_models.es_json_text_model import ArcText
 
 
 def check_es_index(is_create_index, logger):

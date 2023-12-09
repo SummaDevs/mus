@@ -7,7 +7,7 @@ from traceback import print_exc
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 
-from mus.cleansing.arc_walk.jsonarc_walk import arc_walk_iter
+from mus.core.arc_walk.json_arc_walk import json_file_iter
 from mus.config.config import app_config
 from mus.constant import cons_ner
 
@@ -66,14 +66,14 @@ def visualize_text(fig_file_name, text, title):
 
 
 def run_wordcloud_viz(_, text_path, per_subdir, per_topic):
-    logger.info("Start walking in %s", text_path)
+    logger.info("Start walking in %s, per subdir %s", text_path, per_subdir)
 
     stats = defaultdict(int)
 
     topics_text = defaultdict(str)
     topics_names = {}
 
-    for root_dir, file_name in arc_walk_iter(text_path, stats):
+    for root_dir, file_name in json_file_iter(text_path, stats):
         agg_named_entities(root_dir, file_name, topics_names, topics_text, stats)
 
     if per_topic:

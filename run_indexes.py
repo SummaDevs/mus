@@ -1,6 +1,6 @@
 """
 
-Data cleansing and transformation, optical character recognition (OCR)
+Data indexes structure your data in intermediate representations that are easy and performant for LLMs to consume.
 
 """
 

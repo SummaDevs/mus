@@ -82,8 +82,14 @@ cd h2ogpt
 virtualenv -p python3.10 .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+# required
+pip install -r reqs_optional/requirements_optional_langchain.txt
+pip install -r reqs_optional/requirements_optional_gpt4all.txt
 
+# create collection
 python src/make_db.py --user_path="/media/vola/mus_std/gpt_text/" --collection_name=VOLAData --selected_file_types="['txt']"
+
+# run api http://localhost:7860
 python generate.py --base_model='llama' --prompt_type=llama2 --score_model=None --max_max_new_tokens=2048 --max_new_tokens=1024 \
        --visible_tos_tab=False --visible_hosts_tab=False --visible_models_tab=False \
        --langchain_modes="['LLM','PersistData']" --langchain_mode=PersistData \

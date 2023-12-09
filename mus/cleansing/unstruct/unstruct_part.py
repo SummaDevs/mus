@@ -26,6 +26,7 @@ def is_extract_mime_type(file_path):
 
 
 def get_elem_text(elem):
+    # TODO: With just joining elements, we're losing info. It should be robust algo here.
     text = ""
     try:
         if ((elem.category == "UncategorizedText" or elem.category == "text" or

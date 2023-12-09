@@ -1,8 +1,8 @@
 import logging
 from collections import defaultdict
 
-from mus.cleansing.arc_walk.jsonarc_walk import arc_walk_iter
 from mus.config.config import app_config
+from mus.core.arc_walk.json_arc_walk import json_file_iter
 from mus.core.es.es_arc_index_file import check_es_index
 from mus.core.es.es_arc_index_file import get_arc_doc_props
 from mus.core.es.es_arc_index_file import index_file
@@ -21,7 +21,7 @@ def run_index_text(config_obj, text_path, is_create_index):
     stats = defaultdict(int)
 
     arc_doc_att = set(get_arc_doc_props().keys())
-    for root_dir, file_name in arc_walk_iter(text_path, stats):
+    for root_dir, file_name in json_file_iter(text_path, stats):
         index_file(root_dir, file_name, arc_doc_att, stats)
 
     logger.info(stats)

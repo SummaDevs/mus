@@ -1,51 +1,41 @@
-import json
-import os
-
 import pyLDAvis
 import pyLDAvis.gensim_models
 from gensim.corpora.dictionary import Dictionary
 from gensim.models import LdaMulticore
 
-from mus.cleansing.arc_walk.jsonarc_walk import arc_walk_iter
+from mus.constant import cons_nlp
 from mus.constant import cons_topic
 from mus.constant import constant
+from mus.core.arc_walk.json_arc_walk import json_data_iter
 from mus.core.text import text_utils
-from mus.nlp.nlp_token import get_tokens
+from mus.nlp.nlp_token import get_text_tokens
 
 
-# TODO: refactor, separate stats from fio
+def get_tokens(doc, tokens):
+    for tok in doc:
+        lemma = tok.lemma_.lower()
+        if (lemma not in cons_nlp.REMOVE_TOKENS and
+                len(lemma) >= cons_nlp.TOK_FILTER_MIN_LEN and
+                tok.pos_ not in cons_nlp.MINOR_TOKENS_SET and not
+                tok.is_stop and tok.is_alpha):
+            tokens.append(lemma)
 
-def arc_data_iter(text_path, nlp_lib, lang_list, stats, file_max_cnt=None):
-    for root_dir, file_name in arc_walk_iter(text_path, stats):
-        stats["cnt"] += 1
-        file_path = os.path.join(root_dir, file_name)
-        try:
-            with open(file_path, "r") as fp:
-                json_doc = json.load(fp)
-        except json.JSONDecodeError:
-            stats["json_error"] += 1
-            continue
-
-        if (lang := json_doc["lang"][0]) in lang_list:
-            clean_tokens = get_tokens(nlp_lib, lang, json_doc["text"])
-            yield file_path, clean_tokens
-
-        if file_max_cnt is not None and stats["cnt"] >= file_max_cnt:
-            break
+    return tokens
 
 
 def get_gens_corpus(text_path, nlp_lib, lang_list, stats):
-    # TODO: parallel and not in mem
+    # TODO: parallel, not in mem
     file_tokens = []
     file_map = {}
 
-    for idx, (file_path, tokens) in enumerate(
-            arc_data_iter(text_path, nlp_lib, lang_list, stats, cons_topic.FILE_MAX_CNT)):
-        file_tokens.append(tokens)
-        file_map[idx] = {
-            # and additional stats
-            "file_path": file_path.removeprefix(text_path),
-        }
+    for idx, (file_path, json_doc) in enumerate(
+            json_data_iter(text_path, lang_list, stats, cons_topic.FILE_MAX_CNT)):
+
+        tokens = get_text_tokens(nlp_lib, json_doc["lang"][0], get_tokens, json_doc["text"])
+
+        if tokens:
+            file_tokens.append(tokens)
+            file_map[idx] = file_path.removeprefix(text_path)
 
     gens_dict = Dictionary(file_tokens)
     gens_dict.filter_extremes(

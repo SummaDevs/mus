@@ -7,6 +7,19 @@ from mus.constant import constant
 
 UNS_FILE_SIZE_MAX_KB = 1024
 
+STATS_PRINT_CNT = 100
+ERROR_MAX_CNT = 1000
+
+skip_dir_path = {
+    ".git",
+}
+
+SKIP_JSON_FILE_SET = {
+    "_stats.json",  # directory statistics
+}
+
+ES_DOC_EXT = ".json"
+
 WORKING_LANGUAGES = {
     'be',
     'bg',

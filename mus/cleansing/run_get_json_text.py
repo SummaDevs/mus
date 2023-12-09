@@ -4,9 +4,9 @@ import os
 from collections import defaultdict
 from traceback import print_exc
 
-from mus.cleansing.arc_walk.jsonarc_walk import arc_walk_iter
 from mus.config.config import app_config
-from mus.core.file_utils.file_utils import get_flat_filename
+from mus.core.arc_walk.json_arc_walk import json_file_iter
+from mus.core.file_utils.path_utils import get_flat_filename
 
 logger = logging.getLogger(name=app_config["PROJECT_NAME"])
 
@@ -18,7 +18,7 @@ def run_get_json_text(_, json_path, text_path):
 
     os.makedirs(text_path, exist_ok=True)
 
-    for root_dir, file_name in arc_walk_iter(json_path, stats):
+    for root_dir, file_name in json_file_iter(json_path, stats):
         file_path = os.path.join(root_dir, file_name)
         stats["cnt"] += 1
 

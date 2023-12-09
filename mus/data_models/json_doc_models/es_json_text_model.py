@@ -19,12 +19,21 @@ FIELD_DATA_FREQUENCY_FILTER = {
 }
 
 
+class DataLineage(InnerDoc):
+    proc_name = Keyword(ignore_above=KEYWORD_MAX_LEN)
+    proc_type = Keyword(ignore_above=KEYWORD_MAX_LEN)
+    proc_version = Keyword(ignore_above=KEYWORD_MAX_LEN)
+    proc_date = Date()
+
+
 class NamedEntity(InnerDoc):
+    ne_id = Keyword(ignore_above=KEYWORD_MAX_LEN)
     ne_name = Keyword(ignore_above=KEYWORD_MAX_LEN)
     ne_type = Keyword(ignore_above=KEYWORD_MAX_LEN)
 
 
 class ArcText(Document):
+    collection = Keyword()
     file_path = Keyword()
     lang = Keyword()
 
@@ -36,6 +45,12 @@ class ArcText(Document):
     datetime_access = Date()
     datetime_modification = Date()
     datetime_meta = Date()
+
+    data_origin = Keyword(ignore_above=KEYWORD_MAX_LEN)
+    media_file = Keyword(ignore_above=KEYWORD_MAX_LEN)
+    duration_seconds = Integer()
+    width = Integer()
+    height = Integer()
 
     text = Text(
         analyzer=en_ru_analyzer,
@@ -50,6 +65,7 @@ class ArcText(Document):
 
     tags = Keyword(ignore_above=KEYWORD_MAX_LEN)
 
+    data_lineage = Nested(DataLineage)
     created_at = Date()
 
     # TODO: tune & config
@@ -64,7 +80,7 @@ class ArcText(Document):
         dynamic = MetaField('strict')
 
     def get_mapping(self):
-        self._index.get_mapping()
+        return self._index.get_mapping()
 
     def save(self, **kwargs):
         return super(ArcText, self).save(**kwargs)
