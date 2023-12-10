@@ -101,7 +101,7 @@ logger = init_logger_from_config(
     
 import logging
 
-logger = logging.getLogger("SpecialUniqueName")  # the same logger as logger in run.py
+logger = logging.getLogger("SpecialUniqueName")  # the same logger as logger in run_load.py
 
 # logger mesage as dict
 logger.info({
@@ -116,7 +116,7 @@ logger.info({
    
 import logging
 
-logger = logging.getLogger("SpecialUniqueName")  # the same logger as logger in run.py
+logger = logging.getLogger("SpecialUniqueName")  # the same logger as logger in run_load.py
 
 # logger mesage as string
 logger.info("Start saver")
