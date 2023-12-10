@@ -9,7 +9,6 @@ import sys
 import click
 
 from mus.cleansing.run_get_json_text import run_get_json_text
-from mus.cleansing.run_index_text import run_index_text
 from mus.config.config import app_config
 from mus.core.app_logger.fabrics.config_init import init_logger_from_config
 from mus.core.file_utils.path_utils import norm_dir_path
@@ -21,27 +20,6 @@ logger = init_logger_from_config(name=app_config["PROJECT_NAME"], config=app_con
 @click.pass_context
 def cli(ctx):
     ctx.obj.update(app_config)
-
-
-@cli.command("index_json_text", help="Index jsom archive text ")
-@click.option("--text_path", "-t",
-              type=click.Path(),
-              required=True,
-              help="extracted text json file base path")
-@click.option("--ci",
-              is_flag=True,
-              show_default=False,
-              default=False,
-              help="create new elastic search index, drop existed one if exists")
-@click.pass_obj
-def index_json_text(config_obj, text_path, ci):
-    logger.info("Indexing text")
-
-    run_index_text(config_obj, norm_dir_path(text_path), ci)
-
-    logger.info("Indexing finished")
-
-    sys.exit()
 
 
 @cli.command("get_json_text", help="Extract text from json into text silos")

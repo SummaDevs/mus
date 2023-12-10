@@ -26,7 +26,6 @@ Options:
 Commands:
   extract_text_json  Extract unstructured archive text with metadata
   get_json_text      Extract text from json into silos
-  index_json_text    Index jsom archive text
 ````
 
 Extract text, run topic modeling and NER
@@ -37,9 +36,10 @@ python run_arc_walk.py extract_text_json -a /media/vola/mus_row/_1_ -t /media/vo
 
 # topic modeling and NER 
 python run_topic.py model_topic -t /media/vola/mus_std/_1_std/ --update --per_subdir -l ru -l ua -l en
+python run_ner.py ner -t /media/vola/mus_std/_1_std/ --update -l ru -l ua -l en
 
 # create new index (elaticstarch)
-python run_arc_walk.py index_json_text -t /media/vola/mus_std/_1_std/ --ci
+python run_indexes.py index_es_json -t /media/vola/mus_std/_1_std/ --ci
 
 try:
 arc_text/_search

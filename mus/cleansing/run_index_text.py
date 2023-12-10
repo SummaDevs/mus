@@ -11,7 +11,7 @@ from mus.core.es.es_conn import create_es_conn
 logger = logging.getLogger(name=app_config["PROJECT_NAME"])
 
 
-def run_index_text(config_obj, text_path, is_create_index):
+def run_index_es_json(config_obj, text_path, is_create_index):
     create_es_conn(config_obj)
 
     es_index_name = check_es_index(is_create_index, logger)

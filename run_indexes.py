@@ -9,7 +9,7 @@ import sys
 import click
 
 from mus.cleansing.run_get_json_text import run_get_json_text
-from mus.cleansing.run_index_text import run_index_text
+from mus.cleansing.run_index_text import run_index_es_json
 from mus.config.config import app_config
 from mus.core.app_logger.fabrics.config_init import init_logger_from_config
 from mus.core.file_utils.path_utils import norm_dir_path
@@ -17,13 +17,13 @@ from mus.core.file_utils.path_utils import norm_dir_path
 logger = init_logger_from_config(name=app_config["PROJECT_NAME"], config=app_config["LOGGER"])
 
 
-@click.group(help="OCR & cleansing Runner")
+@click.group(help="Data indexes Runner")
 @click.pass_context
 def cli(ctx):
     ctx.obj.update(app_config)
 
 
-@cli.command("index_json_text", help="Index jsom archive text ")
+@cli.command("index_es_json", help="Update elasticsearch index from json archive")
 @click.option("--text_path", "-t",
               type=click.Path(),
               required=True,
@@ -34,10 +34,10 @@ def cli(ctx):
               default=False,
               help="create new elastic search index, drop existed one if exists")
 @click.pass_obj
-def index_json_text(config_obj, text_path, ci):
+def index_es_json(config_obj, text_path, ci):
     logger.info("Indexing text")
 
-    run_index_text(config_obj, norm_dir_path(text_path), ci)
+    run_index_es_json(config_obj, norm_dir_path(text_path), ci)
 
     logger.info("Indexing finished")
 
