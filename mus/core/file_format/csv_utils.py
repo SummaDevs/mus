@@ -22,7 +22,7 @@ class Gdelt20CsvDialect(csv.Dialect):
 
 
 # pylint: disable=R0903
-class CsvMemDictReader():
+class CsvMemDictReader:
     """
     Csv memory writer implementation
     """
@@ -39,8 +39,8 @@ class CsvMemDictReader():
 
     def __call__(self, *args, **kwargs):
         """
-        :param args: not used
-        :param kwargs: not used
+        :param args: _
+        :param kwargs: _
 
         :return: iterator
         """
@@ -52,7 +52,7 @@ class CsvMemDictReader():
                 self.csv_fo.close()
 
 
-class CsvMemDictWriter():
+class CsvMemDictWriter:
     """
     In memory csv writer class
     """

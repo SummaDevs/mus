@@ -1,6 +1,6 @@
-# latitude coordinates before longitude
-# latitude coordinate is between -90 and 90.
-# longitude coordinate is between -180 and 180.
+# LATITUDE_FIELD coordinates before LONGTITUDE_FIELD
+# LATITUDE_FIELD coordinate is between -90 and 90.
+# LONGTITUDE_FIELD coordinate is between -180 and 180.
 # Babruysk = 53.15, 29.24
 # Aktau = 43.65, 51.17
 

@@ -11,7 +11,7 @@ KEY_SUF_DATE = "_dt"
 CHECK_POINT_NUM = 100
 
 
-class Gdelt20CheckPoint():
+class Gdelt20CheckPoint:
     def __init__(self, base_path, finish_date, start_date):
         self._lock = Lock()
 

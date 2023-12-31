@@ -1,10 +1,10 @@
 import click
 
-from mus.gdelt20.extract.run_extract import run_extract
-from mus.gdelt20.load.run_load import run_load
 from mus.config.config import app_config
 from mus.constant import cons_gdelt20
 from mus.core.app_logger.fabrics.config_init import init_logger_from_config
+from mus.gdelt20.extract.run_extract_gdelt import run_extract_gdelt
+from mus.gdelt20.load.run_load_gdelt import run_load_gdelt
 
 logger = init_logger_from_config(name=app_config["PROJECT_NAME"], config=app_config["LOGGER"])
 
@@ -15,7 +15,11 @@ def cli(ctx):
     ctx.obj.update(app_config)
 
 
-@cli.command("extract", help="Extract gdelt20 data into storage")
+def check_params(start_date, finish_date):
+    assert start_date <= finish_date, f"{start_date} gt {finish_date}"
+
+
+@cli.command("extract_gdelt", help="Extract gdelt20 data into storage")
 @click.option("--base_path", "-b",
               type=click.Path(),
               required=True,
@@ -42,8 +46,11 @@ def cli(ctx):
               multiple=True,
               help="gdelt20 data set object type to load")
 @click.pass_obj
-def extract(config_obj, base_path, start_date, finish_date, languages, object_types):
-    run_extract(
+def extract_gdelt(config_obj, base_path, start_date, finish_date, languages, object_types):
+    check_params(start_date, finish_date)
+
+    logger.info("Start gdelt2 data extraction")
+    run_extract_gdelt(
         config_obj,
         base_path,
         start_date,
@@ -51,8 +58,10 @@ def extract(config_obj, base_path, start_date, finish_date, languages, object_ty
         languages,
         object_types
     )
+    logger.info("Finish gdelt2 data extraction")
 
-@cli.command("load", help="Load gdelt20 data into db")
+
+@cli.command("load_gdelt", help="Load gdelt20 data into db")
 @click.option("--base_path", "-b",
               type=click.Path(),
               required=True,
@@ -83,9 +92,11 @@ def extract(config_obj, base_path, start_date, finish_date, languages, object_ty
               multiple=True,
               help="gdelt20 data set object type to load")
 @click.pass_obj
-def load(config_obj, base_path, target_service, start_date, finish_date, languages, object_types):
-    # TODO: implement extraction into targets directly from api
-    run_load(
+def load_gdelt(config_obj, base_path, target_service, start_date, finish_date, languages, object_types):
+    check_params(start_date, finish_date)
+
+    logger.info("Start gdelt2 data loading")
+    run_load_gdelt(
         config_obj,
         base_path,
         target_service,
@@ -94,6 +105,7 @@ def load(config_obj, base_path, target_service, start_date, finish_date, languag
         languages,
         object_types
     )
+    logger.info("Finish gdelt2 data loading")
 
 
 if __name__ == "__main__":

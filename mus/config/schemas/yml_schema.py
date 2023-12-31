@@ -48,6 +48,10 @@ class YamlConfigSchema(TrafaretConfigSchemaBase):
                     t.Key("OUTPUT_FOLDER"): str_strip(
                         min_length=5, max_length=64),
                 }),
+                t.Key("OPENAI"): t.Dict({
+                    t.Key("OPENAI_API_KEY"): str_strip(
+                        min_length=5, max_length=64),
+                }),
 
             })
         })

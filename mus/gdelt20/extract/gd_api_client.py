@@ -1,8 +1,8 @@
-from mus.gdelt20.common import request_utils
 from mus.constant import cons_gdelt20_api
+from mus.gdelt20.common import request_utils
 
 
-class Gdelt20ApiClietnt():
+class Gdelt20ApiClient:
     def __init__(self):
         self.rate_limiter = request_utils.ThreadRateLimiter(cons_gdelt20_api.API_RATE_LIMIT)
 
@@ -19,4 +19,4 @@ class Gdelt20ApiClietnt():
         return request_utils.download_url(url, save_path), url
 
 
-gd_api_client = Gdelt20ApiClietnt()
+gd_api_client = Gdelt20ApiClient()

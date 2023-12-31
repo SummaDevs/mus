@@ -7,10 +7,11 @@ from fastavro import json_writer
 from fastavro import parse_schema
 
 
-class AvroJsonWriter():
+class AvroJsonWriter:
     """
     Avro json writer, fast avro binding
     """
+
     def __init__(self, schema):
         """
         :param schema: avro schema

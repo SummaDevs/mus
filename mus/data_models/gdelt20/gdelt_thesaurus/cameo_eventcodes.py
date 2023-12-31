@@ -409,5 +409,4 @@ INTEREST_CODE_SET = set.union(
     # COERCE_CODE_SET,
     # ASSAULT_CODE_SET,
     # FIGHT_CODE_SET,
-
 )
