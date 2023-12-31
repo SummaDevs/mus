@@ -16,7 +16,7 @@ class ExtractorError(Exception):
     pass
 
 
-class FileExtractWorker():
+class FileExtractWorker:
 
     def __init__(
             self,

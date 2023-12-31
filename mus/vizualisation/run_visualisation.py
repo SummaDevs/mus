@@ -7,9 +7,9 @@ from traceback import print_exc
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 
-from mus.core.arc_walk.json_arc_walk import json_file_iter
 from mus.config.config import app_config
 from mus.constant import cons_ner
+from mus.core.arc_walk.json_arc_walk import json_file_iter
 
 logger = logging.getLogger(name=app_config["PROJECT_NAME"])
 

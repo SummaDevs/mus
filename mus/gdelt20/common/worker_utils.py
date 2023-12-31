@@ -64,7 +64,7 @@ class JobQueue(object):
     def lock_flush(self):
         """
         Force safe working queue clearance
-        Note: queue.full does not guarantied
+        Note: queue.full does not work
         """
         with self.lock:
             while not self.queue.empty():

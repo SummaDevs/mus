@@ -2,6 +2,8 @@
 
 Cognitive real-time agent
 
+Models, prompt, parser, memory, chain, evaluation
+
 """
 
 import sys

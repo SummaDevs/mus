@@ -113,3 +113,19 @@ def es_credentials_schema(prefix=""):
         t.Key(f"{prefix}ES_NODES_NUM", optional=True) >> "ES_NODES_NUM":
             t.Int(gte=1, lte=128)
     })
+
+
+def openai_schema(prefix=""):
+    """
+    :param prefix: special prefix to get es config
+    :type prefix: str
+
+    :return: openai config schema
+    :rtype: t.Dict
+
+    """
+
+    return t.Dict({
+        t.Key(f"{prefix}OPENAI_API_KEY", optional=True) >> "OPENAI_API_KEY":
+            str_strip(min_length=64, max_length=64),
+    })

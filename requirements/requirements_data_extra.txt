@@ -6,8 +6,5 @@ git+https://github.com/facebookresearch/detectron2.git
 farm-haystack[crawler,ocr,docstores,docstores-gpu,faiss,faiss-gpu,inference,pinecone,preprocessing,file-conversion,ray,weaviate]==1.22.1
 pygraphviz==1.11
 
-# llama-index
-llama-index==0.9.11.post1
-
 # tensorflow
 tensorflow[and-cuda]==2.15.0

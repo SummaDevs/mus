@@ -11,6 +11,7 @@ import click
 from mus.config.config import app_config
 from mus.core.app_logger.fabrics.config_init import init_logger_from_config
 from mus.core.file_utils.path_utils import norm_dir_path
+from mus.gdelt20.visualise.run_gdelt_viz import run_gdelt_viz
 from mus.vizualisation.run_visualisation import run_wordcloud_viz
 
 logger = init_logger_from_config(name=app_config["PROJECT_NAME"], config=app_config["LOGGER"])
@@ -44,6 +45,22 @@ def wordcloud_viz(config_obj, text_path, per_subdir, per_topic):
     run_wordcloud_viz(config_obj, norm_dir_path(text_path), per_subdir, per_topic)
 
     logger.info("Finish wordcloud visualization")
+
+    sys.exit()
+
+
+@cli.command("gdelt_viz", help="Summarise gdelt20 data")
+@click.option("--file_path", "-p",
+              type=click.Path(),
+              required=True,
+              help="gdelt20 data source file path")
+@click.pass_obj
+def load_gdelt(config_obj, file_path):
+    logger.info("Start gdelt2 data loading")
+
+    run_gdelt_viz(config_obj, file_path)
+
+    logger.info("Finish gdelt2 data loading")
 
     sys.exit()
 

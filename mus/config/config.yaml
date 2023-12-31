@@ -1,14 +1,16 @@
 CONFIG_DATA:
-  PROJECT_NAME: "mus"
+  PROJECT_NAME: mus
   APP_ENV: prod
   DATE_FORMAT: "%Y-%m-%d"
   LOGGER:
-    LOGGING_LEVEL: "INFO"
+    LOGGING_LEVEL: INFO
   DATA_PROCESSING:
-    INPUT_FOLDER: "row_data"
-    OUTPUT_FOLDER: "std_data"
+    INPUT_FOLDER: row_data
+    OUTPUT_FOLDER: std_data
   ES:
     ES_HOST: localhost
     ES_HOST_SCHEMA: http
     ES_PORT: 9200
     ES_NODES_NUM: 1
+  OPENAI:
+    OPENAI_API_KEY: openai

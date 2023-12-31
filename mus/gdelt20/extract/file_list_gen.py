@@ -9,7 +9,7 @@ from mus.gdelt20.extract.gd_api_client import gd_api_client
 logger = init_logger_from_config(name=app_config["PROJECT_NAME"], config=app_config["LOGGER"])
 
 
-class Gdelt20FileListGen():
+class Gdelt20FileListGen:
     def __init__(self, config_obj, base_path, start_date, finish_date, languages, object_types):
         self.config_obj = config_obj
 

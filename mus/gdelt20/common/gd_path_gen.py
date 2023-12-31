@@ -17,7 +17,7 @@ API_FILE_NAME_TMPL = {
 }
 
 
-class Gdelt20PathGen():
+class Gdelt20PathGen:
     def __init__(self, base_path, start_date, finish_date):
         self.base_path = base_path
         self.metadata_dir = os.path.join(self.base_path, GDELT_METADATA_DIR)
