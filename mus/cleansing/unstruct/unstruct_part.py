@@ -63,7 +63,15 @@ def text_from_elements(elements, txt_dict):
     return txt_dict
 
 
-def extract_text(doc_path) -> (dict, str):
+def extract_add_text(doc_path, file_ext):
+
+    txt_meta = {"error_msg": "", "lang": "", "txt_len": 0}
+    txt = ""
+
+    return txt_meta, txt
+
+
+def extract_unstruct_text(doc_path):
     txt_dict = defaultdict(str)
 
     try:
@@ -79,3 +87,10 @@ def extract_text(doc_path) -> (dict, str):
         txt_meta = {"lang": list(txt_dict.keys()), "txt_len": len(txt)}
 
     return txt_meta, txt
+
+
+def extract_text(doc_path, file_ext) -> (dict, str):
+    if file_ext in cons_cleansing.TYPE_EXTRACT_ADD_EXT_SET:
+        return extract_add_text(doc_path, file_ext)
+    else:
+        return extract_unstruct_text(doc_path)

@@ -32,7 +32,7 @@ Extract text, run topic modeling and NER
 
 ````
 # extract text from silos archive
-python run_arc_walk.py extract_text_json -a /media/vola/mus_row/_1_ -t /media/vola/mus_std/_1_cln/
+python run_cleansing.py get_text_json -a /media/vola/mus_row/_1_ -t /media/vola/mus_std/_1_cln/
 
 # topic modeling and NER 
 python run_topic.py model_topic -t /media/vola/mus_std/_1_std/ --update --per_subdir -l ru -l ua -l en

@@ -10,7 +10,7 @@ from mus.core.file_utils.file_utils import save_dir_meta
 logger = logging.getLogger(name=app_config["PROJECT_NAME"])
 
 
-def run_extract_text_json(_, arc_path, text_path):
+def run_get_text_json(_, arc_path, text_path):
     is_installed, el_list = is_unstructured_installed()
     if not is_installed:
         logger.error(el_list)
