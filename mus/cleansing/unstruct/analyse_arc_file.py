@@ -18,6 +18,7 @@ def analyse_arc_file(arc_path, text_path, root_dir, file_name, stats):
         stats["target_exists"] += 1
         return
 
+
     file_ext = file_name.rsplit(".", 1)[-1].lower()
     if file_ext not in cons_cleansing.TYPE_EXTRACT_EXT_SET:
         stats["skipped_by_extension"] += 1
@@ -33,7 +34,7 @@ def analyse_arc_file(arc_path, text_path, root_dir, file_name, stats):
             stats["skip_big_file_cnt"] += 1
             return
 
-        text_meta, file_text = extract_text(file_path)
+        text_meta, file_text = extract_text(file_path, file_ext)
         stats["extract_text_cnt"] += 1
     else:
         stats["no_text_type_cnt"] += 1

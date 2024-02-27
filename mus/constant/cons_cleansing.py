@@ -54,8 +54,9 @@ EXCLUDE_MIME_TYPE_SET = {
     "text/rtf"
 }
 EXT_EXTRACT = dict([(k, v) for k, v in STR_TO_FILETYPE.items() if k not in EXCLUDE_MIME_TYPE_SET])
+TYPE_EXTRACT_ADD_EXT_SET = {"eml"}
 TYPE_EXTRACT_TEXT_SET = set(EXT_EXTRACT.keys())
-TYPE_EXTRACT_EXT_SET = set((ext.name.lower() for ext in EXT_EXTRACT.values()))
+TYPE_EXTRACT_EXT_SET = set((ext.name.lower() for ext in EXT_EXTRACT.values())).union(TYPE_EXTRACT_ADD_EXT_SET)
 
 ELEMENT_TEXT_MIN_LEN = 8
 

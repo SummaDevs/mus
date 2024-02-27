@@ -16,7 +16,8 @@ class NLP:
 
     @staticmethod
     def _spacy_load(lang, **kwargs):
-        return spacy.load(f"{lang}_core_news_lg", **kwargs)
+        fname = f"{lang}_core_web_lg" if lang == "en" else f"{lang}_core_news_lg"
+        return spacy.load(fname, **kwargs)
 
     def _add_pipe(self, add_pipe, lib_name, lang, **kwargs):
         if add_pipe:

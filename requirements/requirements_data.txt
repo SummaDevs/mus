@@ -8,7 +8,9 @@
 
 -r requirements.txt
 
-unstructured[all-docs]==0.11.0
+# detectron pre-req
+torch
+unstructured[all-docs]==0.12.4
 
 # unstructured deps
 paddleocr==2.7.0
@@ -20,7 +22,7 @@ pyLDAvis==3.4.1
 spacy==3.7.2
 
 # llm
-langchain==0.0.348
+langchain==0.1.9
 llama-index==0.9.11.post1
 
 # simple visualisation
@@ -40,12 +42,12 @@ clean-text[gpl]==0.6.0
 
 # web crawler
 pywebcopy==7.0.2
-scrapy==2.11.0
+scrapy==2.11.1
 boilerpy3==1.0.7
 # https://www.zenrows.com/blog/scrapy-selenium#implement-selenium4-workaround
 # scrapy-selenium==0.0.7
 
 # utils
 csvkit==1.3.0
-
 geopandas==0.14.1
+magika==0.5.0
