@@ -1,10 +1,18 @@
-# torch issue
-git+https://github.com/facebookresearch/detectron2.git
-
 # farm-haystack deps
 # sudo apt install libgraphviz-dev
-farm-haystack[crawler,ocr,docstores,docstores-gpu,faiss,faiss-gpu,inference,pinecone,preprocessing,file-conversion,ray,weaviate]==1.22.1
+#farm-haystack[crawler,ocr,docstores,docstores-gpu,faiss,faiss-gpu,inference,pinecone,preprocessing,file-conversion,ray,weaviate]==1.22.1
 pygraphviz==1.11
 
-# tensorflow
-tensorflow[and-cuda]==2.15.0
+jax[cuda12_pip] --config-settings '-f'='https://storage.googleapis.com/jax-releases/jax_cuda_releases.html'
+# sudo apt install openmpi-bin libopenmpi-dev
+# nvidia-docker run --entrypoint /bin/bash -it nvidia/cuda:12.1.0-devel-ubuntu22.04
+tensorrt_llm==0.7.1 --config-settings='--extra-index-url'='https://pypi.nvidia.com'
+
+llmware==0.2.3
+
+nemoguardrails==0.7.1
+
+goldenverba==0.3.1
+
+llama-index>=0.9.14
+arize-phoenix

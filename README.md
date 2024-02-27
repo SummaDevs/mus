@@ -32,7 +32,7 @@ Extract text, run topic modeling and NER
 
 ````
 # extract text from silos archive
-python run_arc_walk.py extract_text_json -a /media/vola/mus_row/_1_ -t /media/vola/mus_std/_1_cln/
+python run_cleansing.py get_text_json -a /media/vola/mus_row/_1_ -t /media/vola/mus_std/_1_cln/
 
 # topic modeling and NER 
 python run_topic.py model_topic -t /media/vola/mus_std/_1_std/ --update --per_subdir -l ru -l ua -l en
@@ -241,3 +241,28 @@ mypy project_package_name*
 ```
 docker build .
 ```
+
+
+# TODO
+## Models to estimate
+https://github.com/LargeWorldModel/LWM
+
+https://github.com/mathvision-cuhk/MathVision
+
+https://huggingface.co/docs/transformers/model_doc/realm
+
+https://huggingface.co/docs/transformers/model_doc/rag
+
+https://github.com/NVIDIA/NeMo-Guardrails
+
+https://docs.llamaindex.ai/en/latest/getting_started/concepts.html
+
+https://github.com/Arize-ai/phoenix
+
+https://github.com/weaviate/Verba
+
+https://github.com/Mintplex-Labs/anything-llm
+
+https://github.com/neuml/txtai
+
+https://github.com/khoj-ai/khoj
